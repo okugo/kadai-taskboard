@@ -41,6 +41,10 @@ class TaskboardsController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+        
         $taskboard = new Taskboard;
         $taskboard->content = $request->content;
         $taskboard->save();
@@ -57,6 +61,10 @@ class TaskboardsController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+        
         $taskboard = Taskboard::find($id);
         $taskboard->content = $request->content;
         $taskboard->save();

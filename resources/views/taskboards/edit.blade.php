@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>id: {{ $taskboard->id }} のタスク編集ページ</h1>
-
+    
     {!! Form::model($taskboard, ['route' => ['taskboards.update', $taskboard->id], 'method' => 'put']) !!}
 
         {!! Form::label('content', 'タスク:') !!}

@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <h1>タスクジ新規作成ページ</h1>
-
+    <h1>タスク新規作成ページ</h1>
+    
     {!! Form::model($taskboard, ['route' => 'taskboards.store']) !!}
 
         {!! Form::label('content', 'タスク:') !!}
