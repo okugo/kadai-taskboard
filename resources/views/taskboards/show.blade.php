@@ -10,7 +10,7 @@
             <td>{{ $taskboard->id }}</td>
         </tr>
         <tr>
-            <th>タイトル</th>
+            <th>タスク</th>
             <td>{{ $taskboard->content }}</td>
         </tr>
         <tr>
