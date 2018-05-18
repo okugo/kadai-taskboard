@@ -7,7 +7,7 @@
     @if (count($taskboards) > 0)
         <ul>
             @foreach ($taskboards as $taskboard)
-               <li>{!! link_to_route('taskboards.show', $taskboard->id, ['id' => $taskboard->id]) !!} : {{ $taskboard->content }}</li>
+               <li>{!! link_to_route('taskboards.show', $taskboard->id, ['id' => $taskboard->id]) !!} : {{ $taskboard->content }}: {{ $taskboard->status }}</li>
             @endforeach
         </ul>
     @endif

@@ -43,10 +43,12 @@ class TaskboardsController extends Controller
     {
         $this->validate($request, [
             'content' => 'required|max:191',
+            'status' => 'required|max:191',
         ]);
         
         $taskboard = new Taskboard;
         $taskboard->content = $request->content;
+        $taskboard->status = $request->status; 
         $taskboard->save();
 
         return redirect('/');
@@ -63,10 +65,12 @@ class TaskboardsController extends Controller
     {
         $this->validate($request, [
             'content' => 'required|max:191',
+            'status' => 'required|max:191',
         ]);
         
         $taskboard = Taskboard::find($id);
         $taskboard->content = $request->content;
+        $taskboard->status = $request->status;
         $taskboard->save();
 
         return redirect('/');

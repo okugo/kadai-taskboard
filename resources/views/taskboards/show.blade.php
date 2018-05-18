@@ -4,7 +4,8 @@
 
     <h1>id = {{ $taskboard->id }} のタスク詳細ページ</h1>
 
-    <p>{{ $taskboard->content }}</p>
+    <p>タスク：{{ $taskboard->content }}</p>
+    <p>ステータス：{{ $taskboard->status }}</p>
     
      {!! link_to_route('taskboards.edit', 'このタスクを編集', ['id' => $taskboard->id]) !!}
      
