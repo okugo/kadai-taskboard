@@ -17,39 +17,62 @@ class TaskboardsController extends Controller
      */
     public function index()
     {
-        $taskboards = Taskboard::all();
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $taskboards = $user->taskboards()->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('taskboards.index', [
-            'taskboards' => $taskboards,
-        ]);
+            $data = [
+                'user' => $user,
+                'taskboards' => $taskboards,
+            ];
+            $data += $this->counts($user);
+
+            return view('taskboards.index', $data);
+        }else {
+            return view('welcome');
+        }
     }
+    
     public function show($id)
     {
-        $taskboard = Taskboard::find($id);
-
-        return view('taskboards.show', [
-            'taskboard' => $taskboard,
-        ]);
+                $data = [];
+        if (\Auth::check()) {
+            $taskboard = Taskboard::find($id);
+            
+            return view('taskboards.show', [
+                'taskboard' => $taskboard
+            ]);
+        }else {
+            return view('welcome');
+        }
     }
     public function create()
     {
-        $taskboard = new Taskboard;
+        
+        $data = [];
+        if (\Auth::check()) {
+            $taskboard = new Taskboard;
 
-        return view('taskboards.create', [
-            'taskboard' => $taskboard,
-        ]);
+             return view('taskboards.create', [
+                'taskboard' => $taskboard,
+              ]);
+        }else {
+            return view('welcome');
+        }
+        
+        
     }
+    
     public function store(Request $request)
     {
         $this->validate($request, [
-            'content' => 'required|max:10',
-            'status' => 'required|max:10',
+            'content' => 'required|max:191',
         ]);
         
-        $taskboard = new Taskboard;
-        $taskboard->content = $request->content;
-        $taskboard->status = $request->status; 
-        $taskboard->save();
+        $request->user()->taskboards()->create([
+            'content' => $request->content,
+        ]);
 
         return redirect('/');
     }

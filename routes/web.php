@@ -11,22 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', 'TaskboardsController@index');
 
-Route::resource('taskboards', 'TaskboardsController');
-
-Route::get('taskboards/{id}', 'TaskboardsController@show');
-Route::post('taskboards', 'TaskboardsController@store');
-Route::put('taskboards/{id}', 'TaskboardsController@update');
-Route::delete('taskboards/{id}', 'TaskboardsController@destroy');
-
-Route::get('taskboards/{id}', 'TaskboardsController@show');
-Route::post('taskboards', 'TaskboardController@store');
-Route::put('taskboards/{id}', 'TaskboardsController@update');
 Route::resource('taskboards', 'TaskboardsController');
 
 // ユーザ登録
