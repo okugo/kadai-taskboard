@@ -36,7 +36,6 @@ class TaskboardsController extends Controller
     
     public function show($id)
     {
-                $data = [];
         if (\Auth::check()) {
             $taskboard = Taskboard::find($id);
             
