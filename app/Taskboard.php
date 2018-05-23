@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Taskboard extends Model
 {
-    protected $fillable = ['content', 'user_id'];
+    protected $fillable = ['content', 'user_id','status'];
 
     public function user()
     {

@@ -67,13 +67,15 @@ class TaskboardsController extends Controller
     {
         $this->validate($request, [
             'content' => 'required|max:191',
+            'status' => 'required|max:191',
         ]);
         
         $request->user()->taskboards()->create([
             'content' => $request->content,
+            'status' => $request->status,
         ]);
 
-        return redirect()->back();
+        return redirect('/');
     }
     public function edit($id)
     {

@@ -17,7 +17,7 @@ class CreatetaskboardsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('content');
-            $table->string('status')->default("未完了");
+            $table->string('status');
             $table->timestamps();
 
             // 外部キー制約
