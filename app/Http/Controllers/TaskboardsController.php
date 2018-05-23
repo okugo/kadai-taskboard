@@ -73,7 +73,7 @@ class TaskboardsController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect('/');
+        return redirect()->back();
     }
     public function edit($id)
     {

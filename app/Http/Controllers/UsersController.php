@@ -20,11 +20,16 @@ class UsersController extends Controller
     {
         $data = [];
         if (\Auth::check()) {
-          $user = User::find($id);
+            $user = \Auth::user();
+            $taskboards = $user->taskboards()->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('users.show', [
-            'user' => $user,
-        ]);
+            $data = [
+                'user' => $user,
+                'taskboards' => $taskboards,
+            ];
+            $data += $this->counts($user);
+
+            return view('users.show', $data);
         }else {
             return view('welcome');
         }

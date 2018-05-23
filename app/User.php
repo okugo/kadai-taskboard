@@ -30,7 +30,6 @@ class User extends Authenticatable
     
     public function taskboards()
     {
-
         return $this->hasMany(Taskboard::class);
     }
 }
