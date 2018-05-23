@@ -18,10 +18,15 @@ class UsersController extends Controller
     }
     public function show($id)
     {
-        $user = User::find($id);
+        $data = [];
+        if (\Auth::check()) {
+          $user = User::find($id);
 
         return view('users.show', [
             'user' => $user,
         ]);
+        }else {
+            return view('welcome');
+        }
     }
 }
