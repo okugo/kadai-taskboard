@@ -74,7 +74,6 @@ class TaskboardsController extends Controller
             'content' => $request->content,
             'status' => $request->status,
         ]);
-
         return redirect('/');
     }
     public function edit($id)
